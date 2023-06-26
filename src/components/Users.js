@@ -3,6 +3,7 @@ import { makeStyles } from "@mui/styles";
 import { Box, Button, TextField } from "@mui/material";
 import SearchBar from "./SearchBar";
 import { DataContext } from "../context/DataContext";
+import { toast } from "react-hot-toast";
 
 const Users = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -150,6 +151,7 @@ const Users = () => {
           user.id === userId ? { ...user, ...updatedData } : user
         )
       );
+      toast.success(`User ${userId} is updated`);
     } catch (error) {
       console.log(error);
     }
@@ -178,6 +180,8 @@ const Users = () => {
       });
 
       handleUserSelect(null);
+
+      toast.success(`user ${userId} is deleted`);
     } catch (error) {
       console.log(error);
     }

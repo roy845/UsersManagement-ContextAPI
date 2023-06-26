@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Button, TextField } from "@mui/material";
 import { DataContext } from "../context/DataContext";
+import { toast } from "react-hot-toast";
 
 const useStyles = makeStyles(() => ({
   todoContainer: {
@@ -79,6 +80,7 @@ const AddPost = () => {
   const addUser = () => {
     addNewUser(newUser);
     setShowAddUser(false);
+    toast.success(`New User - ${newUser.name} is added`);
   };
 
   return (

@@ -1,7 +1,8 @@
 import React, { useContext, useRef, useState } from "react";
 import { makeStyles } from "@mui/styles";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, TextareaAutosize } from "@mui/material";
 import { DataContext } from "../context/DataContext";
+import { toast } from "react-hot-toast";
 
 const useStyles = makeStyles(() => ({
   todoContainer: {
@@ -81,6 +82,7 @@ const AddPost = () => {
   const addPost = () => {
     addNewPost(selectedUserId, newPost);
     setShowAddPost(false);
+    toast.success(`New post to user ${selectedUserId} is added`);
   };
 
   return (
@@ -114,7 +116,9 @@ const AddPost = () => {
             }))
           }
         />
-        <TextField
+        <TextareaAutosize
+          minRows={10}
+          placeholder="Body"
           variant="outlined"
           margin="normal"
           fullWidth
