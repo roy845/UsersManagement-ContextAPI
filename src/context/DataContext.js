@@ -1,53 +1,15 @@
-import React, { createContext, useState, useEffect } from "react";
-import { getAllPosts, getAllTodos, getAllUsers } from "../ServerAPI";
+import React, { createContext, useState } from "react";
+import useFetchData from "../hooks/useFetchData";
 export const DataContext = createContext();
 
 const DataContextProvider = ({ children }) => {
   const [selectedUserId, setSelectedUserId] = useState(null);
-  const [todos, setTodos] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [posts, setPosts] = useState([]);
   const [selectedTodos, setSelectedTodos] = useState([]);
   const [selectedPosts, setSelectedPosts] = useState([]);
   const [showAddTodo, setShowAddTodo] = useState(false);
   const [showAddPost, setShowAddPost] = useState(false);
   const [showAddUser, setShowAddUser] = useState(false);
-
-  useEffect(() => {
-    const fetchAllUsers = async () => {
-      try {
-        const { data } = await getAllUsers();
-        setUsers(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchAllUsers();
-  }, []);
-
-  useEffect(() => {
-    const fetchAllTodos = async () => {
-      try {
-        const { data } = await getAllTodos();
-        setTodos(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchAllTodos();
-  }, []);
-
-  useEffect(() => {
-    const fetchAllPosts = async () => {
-      try {
-        const { data } = await getAllPosts();
-        setPosts(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchAllPosts();
-  }, []);
+  const [todos, posts, users, setTodos, setPosts, setUsers] = useFetchData();
 
   const updateTodo = (todoId, completed) => {
     setTodos((prevTodos) =>

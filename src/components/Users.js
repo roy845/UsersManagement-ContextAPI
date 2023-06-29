@@ -249,6 +249,7 @@ const Users = () => {
         handleSearch={handleSearch}
         setShowAddUser={setShowAddUser}
       />
+
       <div className={classes.scrollableContainer} ref={scrollableContainerRef}>
         {filteredUsers.map((user) => (
           <Box
