@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import useFetchData from "../hooks/useFetchData";
 export const DataContext = createContext();
 
@@ -110,4 +110,6 @@ const DataContextProvider = ({ children }) => {
   );
 };
 
-export { DataContextProvider };
+const useData = () => useContext(DataContext);
+
+export { useData, DataContextProvider };

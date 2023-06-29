@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Box, Button, TextField } from "@mui/material";
 import SearchBar from "./SearchBar";
-import { DataContext } from "../context/DataContext";
+import { useData } from "../context/DataContext";
 import { toast } from "react-hot-toast";
 
 const Users = () => {
@@ -25,7 +25,7 @@ const Users = () => {
     selectedTodos,
     selectedUserId,
     handleUserSelect,
-  } = useContext(DataContext);
+  } = useData();
 
   const useStyles = makeStyles(() => ({
     topContainer: {

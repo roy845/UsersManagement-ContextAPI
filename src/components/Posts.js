@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { makeStyles } from "@mui/styles";
 import { Box, Button } from "@mui/material";
-import { DataContext } from "../context/DataContext";
+import { useData } from "../context/DataContext";
 
 const useStyles = makeStyles(() => ({
   topContainer: {
@@ -98,7 +98,7 @@ const Posts = () => {
     posts,
     setShowAddPost,
     setSelectedPosts,
-  } = useContext(DataContext);
+  } = useData();
 
   useEffect(() => {
     setSelectedPosts(posts.filter((post) => post.userId === selectedUserId));

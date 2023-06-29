@@ -1,7 +1,7 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Button, TextField, TextareaAutosize } from "@mui/material";
-import { DataContext } from "../context/DataContext";
+import { useData } from "../context/DataContext";
 import { toast } from "react-hot-toast";
 
 const useStyles = makeStyles(() => ({
@@ -70,8 +70,7 @@ const AddPost = () => {
   const classes = useStyles();
 
   const scrollableContainerRef = useRef(null);
-  const { selectedUserId, addNewPost, setShowAddPost } =
-    useContext(DataContext);
+  const { selectedUserId, addNewPost, setShowAddPost } = useData();
   const [newPost, setNewPost] = useState({
     id: new Date().toTimeString(),
     title: "",

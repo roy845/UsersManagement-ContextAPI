@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import "../App.css";
 import ButtonAppBar from "../components/ButtonAppBar";
 import Users from "../components/Users";
@@ -7,11 +6,10 @@ import Posts from "../components/Posts";
 import AddTodo from "../components/AddTodo";
 import AddPost from "../components/AddPost";
 import NewUser from "../components/NewUser";
-import { DataContext } from "../context/DataContext";
+import { useData } from "../context/DataContext";
 
 const Main = () => {
-  const { showAddUser, selectedUserId, showAddTodo, showAddPost } =
-    useContext(DataContext);
+  const { showAddUser, selectedUserId, showAddTodo, showAddPost } = useData();
 
   return (
     <div className="App">

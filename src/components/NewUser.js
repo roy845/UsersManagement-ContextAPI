@@ -1,7 +1,7 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Button, TextField } from "@mui/material";
-import { DataContext } from "../context/DataContext";
+import { useData } from "../context/DataContext";
 import { toast } from "react-hot-toast";
 
 const useStyles = makeStyles(() => ({
@@ -67,7 +67,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const AddPost = () => {
-  const { addNewUser, setShowAddUser, users } = useContext(DataContext);
+  const { addNewUser, setShowAddUser, users } = useData();
   const classes = useStyles();
 
   const scrollableContainerRef = useRef(null);
