@@ -102,7 +102,7 @@ const Todos = () => {
 
   useEffect(() => {
     setSelectedTodos(todos.filter((todo) => todo.userId === selectedUserId));
-  }, []);
+  }, [todos, selectedUserId, setSelectedTodos]);
 
   return (
     <>

@@ -102,7 +102,7 @@ const Posts = () => {
 
   useEffect(() => {
     setSelectedPosts(posts.filter((post) => post.userId === selectedUserId));
-  }, []);
+  }, [posts, selectedUserId, setSelectedPosts]);
   return (
     <>
       <div className={classes.topContainer}>
